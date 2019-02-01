@@ -30,3 +30,20 @@
     transform: rotate(360deg);
   }
 }
+
+@media all and (min-width: 480px) {
+  .Signup {
+    padding: 60px 0;
+  }
+
+  .App form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}
+
+.App form span.help-block {
+  font-size: 14px;
+  padding-bottom: 10px;
+  color: #999;
+}
