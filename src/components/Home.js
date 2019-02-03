@@ -15,9 +15,9 @@ class Home extends Component {
   componentDidMount() {
     fetch("http://localhost:3001/api/v0/contents")
       .then(response => response.json())
-      .then(
-        (result) => {
-          let posts = result.response.map((post) => {
+      .then((result) => {
+          let posts = result.response.map(
+            (post) => {
             return(
               <div key={post.id} >
                 <h2>{post.title}</h2>
@@ -46,5 +46,5 @@ class Home extends Component {
         { this.state.posts }
       );
   }
-  
+
 export default Home
