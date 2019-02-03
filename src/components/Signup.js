@@ -27,31 +27,29 @@ class SignUp extends Component {
  handleSubmit(event) {
    event.preventDefault();
    let data = {
-       // firstname: this.state.firstname,
-       // lastname: this.state.lastname,
-       // username: this.state.username,
-       // email: this.state.email,
-       // password: this.state.password,
-       // confirmpassword: this.state.confirmpassword
        'first_name': this.state.firstname, 'last_name': this.state.lastname, 'email': this.state.email,
        'nickname': this.state.username, 'password': this.state.password, 'password_confirmation': this.state.confirmpassword,
       }
+
+   let headers = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'X-PINGOTHER, Content-Type, Authorization, Content-Length, X-Requested-With',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE',
+      'Accept': 'application/json',
+      "Content-Type": "application/json",
+   }
+   const { history } = this.props;
 console.log(data)
     fetch('http://localhost:3001/api/v1/auth', {
       credentials: 'same-origin',
       method: 'POST',
-      headers: {
-        // 'Accept': 'application/json, text/plain, */*',
-        "Content-Type": "application/json"
-     },
-      body: JSON.stringify( data
-     //    {
-     //   'first_name': this.state.firstname, 'last_name': this.state.lastname, 'email': this.state.email,
-     //   'nickname': this.state.username, 'password': this.state.password, 'password_confirmation': this.state.confirmpassword,
-     // }
-   )
-      }).then(function(data) {
+      headers: headers,
+      body: JSON.stringify(data)})
+      .then(function(data) {
       console.log('request succeeded with JSON response', data)
+      if(data.status === 200){
+        history.push('/')
+      }
     }).catch(function(error) {
       console.log('request failed', error)
     })
