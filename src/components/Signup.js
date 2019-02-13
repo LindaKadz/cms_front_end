@@ -48,6 +48,7 @@ console.log(data)
       .then(function(data) {
       console.log('request succeeded with JSON response', data)
       if(data.status === 200){
+        console.log("user signed in!")
         history.push('/')
       }
     }).catch(function(error) {

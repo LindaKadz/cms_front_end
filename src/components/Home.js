@@ -17,7 +17,7 @@ class Home extends Component {
       .then(response => response.json())
       .then((result) => {
           let posts = result.response.map(
-            (post) => {
+          (post) => {
             return(
               <div key={post.id} >
                 <h2>{post.title}</h2>
@@ -28,7 +28,7 @@ class Home extends Component {
              </div>
             )
           });
-          this.setState({  posts: posts});
+          this.setState({ posts });
         },
         (error) => {
           this.setState({
@@ -42,9 +42,11 @@ class Home extends Component {
       return (
         <div>
           Posts
+          { this.state.posts }
         </div>
-        { this.state.posts }
+
       );
   }
+}
 
 export default Home
